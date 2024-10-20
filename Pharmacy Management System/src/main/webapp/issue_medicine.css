@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: url('images/pharmacy\ bg.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.issue-form {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width:400px;
+    width:100%;
+}
+
+.form-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px; /* Adjust spacing between heading and inputs */
+    color: #333; /* Text color */
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 1px; /* Adjust letter spacing */
+    margin-top: 10px; /* Add margin top */
+}
+
+.input-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.input-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 2px;
+    margin-left:60px;
+    width: 80px; /* Adjust width as needed */
+    text-align: left;
+}
+
+.input-field {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffcc;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #4CAF50;
+    color: white;
+    margin-right: 10px;
+    margin-left: 100px;
+}
+
+.close-btn {
+    background-color: #f44336;
+    color: white;
+    margin-left: 10px;
+}

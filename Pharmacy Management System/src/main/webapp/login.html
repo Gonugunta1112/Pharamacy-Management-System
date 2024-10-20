@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2 class="login-heading">Login Form</h2>
+            <div class="input-container">
+                <div class="input-row">
+                <label for="username" class="input-label">Username</label>
+                <input type="text" id="username" placeholder="Username" class="input-field">
+                </div>
+                <div class="input-row">
+                <label for="password" class="input-label">Password</label>
+                <input type="password" id="password" placeholder="Password" class="input-field">
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="login-btn" onclick="login()">Login</button>
+                <button class="close-btn" onclick="closeForm()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username == 'pharmacy' && password == 'rajani') {
+               // alert("Login successful");
+                window.location.href = 'home.html'; // Redirect to home page
+            } else {
+                alert("Incorrect Username or Password");
+            }
+        }
+
+        function closeForm() {
+            window.close();
+        }
+    </script>
+</body>
+</html>

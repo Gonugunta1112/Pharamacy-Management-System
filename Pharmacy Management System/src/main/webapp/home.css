@@ -1,0 +1,56 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-image: url('images/pharm_home_bg.jpeg'); /* Replace with your background image */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:20px;
+}
+
+.buttons {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    margin-left:180px;
+}
+
+button {
+    flex: 1 1 calc(33.33% - 40px); /* Calculate width for 3 buttons per row with gaps */
+    margin: 20px 20px ;
+    padding: 10px 10px;
+    font-size: 18px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button img {
+    width: 40px;
+    height: 50px;
+    margin-right: 10px;
+    vertical-align: middle; /* Ensure vertical alignment */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.logout-btn {
+    margin-top: 20px;
+}

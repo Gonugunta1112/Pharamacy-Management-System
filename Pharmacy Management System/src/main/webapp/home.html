@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
+    
+</head>
+<body>
+    <div class="container">  
+        <div class="buttons">
+            <button onclick="navigateTo('customer.html')">
+             <img src="images/add_user.png" alt="New Customer Icon">Add Customer
+            </button>
+            <button onclick="navigateTo('medicine.html')">
+                <img src="images/add_medi.png" alt="New Medicine Icon"> Add Medicine
+            </button>
+            <button onclick="navigateTo('issueMedicine.html')">
+                <img src="images/issue_medi.png" alt="Issue Medicine Icon"> Issue Medicine
+            </button>
+           <button onclick="navigateTo('customerStatistics.html')">
+                <img src="images/statistics.png" alt="Statistics Icon"> Customer Statistics
+            </button>
+            <button onclick="navigateTo('medi_statistics.html')">
+                <img src="images/statistics.png" alt="Statistics Icon"> Medicine Statistics
+            </button>
+            <button onclick="navigateTo('login.html')">
+                <img src="images/logout.png" alt="Logout Icon"> Logout
+            </button>
+        </div>
+        
+    </div>
+
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+            <!-- Content from add_customer.html will be loaded here -->
+        </div>
+    </div>
+    
+    <script>
+        function loadContent(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modal-content').innerHTML = data;
+                    document.getElementById('modal').style.display = 'block'; // Show modal
+                })
+                .catch(error => console.error('Error loading content:', error));
+        }
+
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
+

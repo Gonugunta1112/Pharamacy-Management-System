@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Medicine Details</title>
+    <link rel="stylesheet" href="issue_medicine.css">
+</head>
+<body>
+    <div class="container">
+        <form id="issue-form" class="issue-form">
+            <h2 class="form-heading">Issue Medicine Details</h2>
+            <div class="input-container">
+                <div class="input-row">
+                    <label for="mobile" class="input-label">Mobile</label>
+                    <input type="text" id="mobile" name="mobile" placeholder="Mobile" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="name" class="input-label">Medicine Nae</label>
+                    <input type="text" id="name" name="name" placeholder="Name" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="quantity" class="input-label">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" placeholder="Quantity" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="price" class="input-label">Price</label>
+                    <input type="number" id="price" name="price" placeholder="Price" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="date_of_purchase" class="input-label">Date Of Purchase</label>
+                    <input type="date" id="date_of_purchase" name="date_of_purchase" class="input-field" required>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="close-btn" onclick="window.location.href='home.html'">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('issue-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(event.target);
+            
+            fetch('issueMedicine', {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.startsWith('Success')) {
+                    alert('Data stored successfully');
+                    event.target.reset(); // Clear all the form fields
+                } else {
+                    alert('Failed to store data: ' + data);
+                }
+            })
+            .catch(error => alert('Error: ' + error.message));
+        });
+    </script>
+</body>
+</html>

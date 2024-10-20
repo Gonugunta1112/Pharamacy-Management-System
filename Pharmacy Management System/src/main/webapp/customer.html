@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Customer</title>
+    <link rel="stylesheet" href="customer.css">
+</head>
+<body>
+    <div class="container">
+        <form id="customer-form" class="customer-form">
+            <h2 class="form-heading">Customer Details</h2>
+            <div class="input-container">
+                <div class="input-row">
+                    <label for="name" class="input-label">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Name" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="age" class="input-label">Age</label>
+                    <input type="number" id="age" name="age" placeholder="Age" class="input-field" required>
+                </div>
+                <div class="input-row">
+                    <label for="mobile" class="input-label">Mobile</label>
+                    <input type="text" id="mobile" name="mobile" placeholder="Mobile" class="input-field" required>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="close-btn" onclick="window.location.href='home.html'">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('customer-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
+
+            fetch('register?' + params.toString(), {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.startsWith('Success')) {
+                    alert('Data stored successfully');
+                    form.reset(); // Clear all the form fields
+                } else {
+                    alert('Failed to store data: ' + data);
+                }
+            })
+            .catch(error => alert('Error: ' + error.message));
+        });
+    </script>
+</body>
+</html>

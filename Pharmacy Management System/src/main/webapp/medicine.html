@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Details</title>
+    <link rel="stylesheet" href="medicine.css">
+</head>
+<body>
+    <div class="container">
+        <form id="medicine-form" class="medicine-form">
+            <h2 class="form-heading">Medicine Details</h2>
+            <div class="input-container">
+                <div class="input-row">
+                    <label for="name" class="input-label">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" class="input-field" required>
+                </div>
+                
+                <div class="input-row">
+                    <label for="expiry" class="input-label">Expiry</label>
+                    <input type="date"  name="expiry" id="expiry" class="input-field" required>
+                </div>
+                
+                <div class="input-row">
+                    <label for="quantity" class="input-label">Quantity</label>
+                    <input type="number" name="quantity" id="quantity" placeholder="Quantity" class="input-field" required>
+                </div>
+                
+                <div class="input-row">
+                    <label for="price" class="input-label">Price</label>
+                    <input type="number" name="price" id="price" placeholder="Price" class="input-field" required>
+                </div>
+                    
+            </div>
+            <div class="button-container">
+                <button type="submit" class="save-btn">Save</button>
+                <button type="button" class="close-btn" onclick="window.location.href='home.html'">Close</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to validate quantity input
+        function validateQuantity() {
+            var quantity = document.getElementById("quantity").value;
+            if (quantity < 0) {
+                alert("Quantity cannot be negative.");
+                return false; // Prevent form submission
+            }
+            return true;
+        }
+
+        // Handle form submission
+        document.getElementById('medicine-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Validate the quantity before proceeding
+            if (!validateQuantity()) return;
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const params = new URLSearchParams(formData);
+
+            // Perform an AJAX request to submit the form data
+            fetch('addMedicine?' + params.toString(), {
+                method: 'GET',
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Check the response from the server
+                if (data.includes('Record Stored into Database')) {
+                    alert('Data stored successfully');
+                    form.reset(); // Clear all the form fields
+                } else {
+                    alert('Failed to store data: ' + data);
+                }
+            })
+            .catch(error => alert('Error: ' + error.message));
+        });
+    </script>
+</body>
+</html>
